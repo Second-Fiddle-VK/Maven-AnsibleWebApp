@@ -1,0 +1,24 @@
+pipeline{
+	agent any
+	tools{
+		maven 'Maven'
+	}
+	stages{
+		stage('Checkout'){
+			steps{
+				git "https://github.com/Second-Fiddle-VK/Maven-AnsibleWebApp.git"
+			}
+		}
+		stage('Build'){
+			steps{
+				sh 'mvn clean install'
+			}
+		}
+		stage('Deploy'){
+			steps{
+				sh 'ansible-playbook ansible/playbook.yml -i ansible/hosts.ini'
+			}
+		}
+	}
+}
+		
