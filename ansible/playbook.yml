@@ -3,11 +3,11 @@
   become: yes
 
   tasks:
-    - name: Copy WAR file to Tomcat
-      copy:
-        src: "/var/snap/jenkins/4865/workspace/Maven-AnsibleWebApp/targetMaven-AnsibleWebApp.war"
-        dest: "/opt/tomcat/webapps/Maven-AnsibleWebApp.war"
-        remote_src: no
+  - name: Copy WAR file to Tomcat
+  copy:
+    src: "/var/snap/jenkins/4865/workspace/Maven-AnsibleWebApp/target/Maven-AnsibleWebApp.war"
+    dest: "/opt/tomcat/webapps/Maven-AnsibleWebApp.war"
+    remote_src: no
 
     - name: Restart Tomcat
       service:
